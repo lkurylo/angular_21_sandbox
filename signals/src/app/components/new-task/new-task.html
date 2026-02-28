@@ -1,0 +1,25 @@
+@if (editMode()) {
+  <h2>Edit task</h2>
+} @else {
+  <h2>Define new task</h2>
+}
+<div class="container">
+  <label for="title" class="row-1 column-1">Title</label>
+  <input id="title" type="text" [(ngModel)]="title" class="column-2 row-1" />
+
+  <label for="description" class="row-2 column-1">Description</label>
+  <textarea
+    id="description"
+    [ngModel]="description()"
+    (ngModelChange)="description.set($event)"
+    class="row-2 column-2"
+  >
+  </textarea>
+</div>
+
+@if (editMode()) {
+  <button (click)="editTask()" [disabled]="!canAddTask()">Edit task</button>
+  <button (click)="cancelEdit()">Cancel edit</button>
+} @else {
+  <button (click)="addTask()" [disabled]="!canAddTask()">Add task</button>
+}

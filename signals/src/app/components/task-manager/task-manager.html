@@ -1,0 +1,3 @@
+<app-new-task (onTaskCreated)="addedTask($event)" (onTaskEdited)="editedTask($event)" [taskToEdit]="taskToEdit()"></app-new-task>
+<app-tasks-list [(tasks)]="allTasks" [taskToEdit]="taskToEdit()" (onEditTask)="editTask($event)"></app-tasks-list>
+<app-task-stats [tasks]="allTasks()"></app-task-stats>
