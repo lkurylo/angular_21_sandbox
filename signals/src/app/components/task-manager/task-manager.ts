@@ -26,8 +26,14 @@ export class TaskManager {
     this.taskToEdit.set(this.allTasks().find((x) => x.id === id));
   }
 
-  editedTask(task: Task) {
-    this.allTasks.update((tasks) => tasks.map((x) => (x.id === task.id ? { ...x, title: task.title, description: task.description } : x)));
+  editedTask(task: Task | null) {
+    if (task) {
+      this.allTasks.update((tasks) =>
+        tasks.map((x) =>
+          x.id === task.id ? { ...x, title: task.title, description: task.description } : x,
+        ),
+      );
+    }
 
     this.taskToEdit.set(undefined);
   }

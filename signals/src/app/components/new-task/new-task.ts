@@ -29,7 +29,7 @@ export class NewTask {
   });
 
   onTaskCreated = output<Task>();
-  onTaskEdited = output<Task>();
+  onTaskEdited = output<Task | null>();
 
   addTask() {
     this.onTaskCreated.emit({
@@ -60,6 +60,8 @@ export class NewTask {
 
   cancelEdit() {
     this.cleanField();
+
+    this.onTaskEdited.emit(null);
   }
 
   cleanField() {
