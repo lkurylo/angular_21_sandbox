@@ -22,7 +22,6 @@ export class TaskManager {
   }
 
   editTask(id: number) {
-    debugger;
     this.taskToEdit.set(this.allTasks().find((x) => x.id === id));
   }
 

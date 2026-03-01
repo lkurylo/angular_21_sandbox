@@ -20,7 +20,6 @@ export class NewTask {
       if (value) {
         this.title.set(value.title);
         this.description.set(value.description || '');
-        debugger;
         this.editMode.set(true);
       }
 
@@ -38,8 +37,7 @@ export class NewTask {
       description: this.description(),
     } as Task);
 
-    this.title.set('');
-    this.description.set('');
+    this.cleanField();
   }
 
   canAddTask = computed(() => {
@@ -47,7 +45,6 @@ export class NewTask {
   });
 
   editTask() {
-    debugger;
     this.onTaskEdited.emit({
       id: this.taskToEdit()!.id,
       title: this.title(),
