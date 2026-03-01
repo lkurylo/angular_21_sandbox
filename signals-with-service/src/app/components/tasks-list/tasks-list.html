@@ -1,0 +1,14 @@
+<h2>List of available tasks</h2>
+<ul>
+  @for(task of tasks(); track task.id){
+    <li class="click" [class.done]="task.done" (click)="toggleTaskDone(task.id)">{{task.title}} ({{task.description || 'no description provided'}})
+    @if(!task.done){
+      <button (click)="editTask($event, task.id)" [disabled]="taskToEdit()">Edit</button>
+
+      @if(task.id === taskToEdit()?.id) {
+        (in edit mode)
+      }
+    }
+    </li>
+  }
+</ul>
